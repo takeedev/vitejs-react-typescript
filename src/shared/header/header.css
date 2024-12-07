@@ -1,0 +1,133 @@
+.container-header {
+  display: flex;
+  position: fixed;
+  justify-content: right;
+  width: 100%;
+  padding: 10px 25px;
+  background-color: #fdfdfd;
+}
+
+.txt-name a {
+    font-size: 16px;
+}
+
+.txt-role a {
+    font-size: 12px;
+}
+.sdf {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 8px;
+  width: 231px;
+  height: 56px;
+  background: #ffffff;
+  border: 1px solid #f0f2f4;
+  border-radius: 28px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.sdf:hover {
+  box-shadow: 0 8px 10px rgba(0, 0, 0, 0.15), 0 4px 6px rgba(0, 0, 0, 0.10);
+}
+
+.image {
+  width: 44px;
+  height: 44px;
+  left: 2px;
+  top: 2px;
+  background: conic-gradient(
+    from 180deg at 50% 50%,
+    #f433b3 0deg,
+    rgba(1, 150, 71, 0.8) 163.12deg,
+    #f433b3 360deg
+  );
+  border: 1px solid #f0f2f4;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.button-down {
+  padding-right: 4px;
+
+  i:hover {
+    cursor: pointer;
+  }
+}
+
+.popup {
+  position: absolute;
+  top: 70px;
+  right: 25px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 10px 0 0 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 10px solid #ffffff;
+
+  transform: scale(0.8);
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.popup.open {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.popup .arrow {
+  position: absolute;
+  top: -10px;
+  right: 5px;
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 10px solid #ffffff;
+  filter: drop-shadow(0 -2px 2px rgba(0, 0, 0, 0.1));
+  transform: translateY(-5px);
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.popup.open .arrow {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.popup ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.popup li {
+  padding: 8px 18px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  display: flex;
+  align-items: center;
+
+  i {
+    gap: 10px;
+    padding: 0 8px 0 0;
+    font-size: 25px;
+  }
+}
+
+.popup li:hover {
+  background-color: #f0f0f0;
+}
