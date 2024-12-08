@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, {useEffect, useState} from 'react'
 import { Input, Label } from 'reactstrap';
 import service from '../../service/indexservice'
 import './addressPage.css'
@@ -46,6 +46,14 @@ function addressPage() {
     const selectZipcode = service.Zipcode.filter((zipcodeParam) => { return zipcodeParam.SUB_DISTRICT_ID == e.target.value && zipcodeParam.DISTRICT_ID == districtValue && zipcodeParam.PROVINCE_ID == provinceValue });
     selectZipcode.map((arr) => { setZipCodeValue(arr.ZIPCODE) })
   }
+
+  useEffect(() => {
+    console.log(provinceValue
+        ,districtValue
+        ,subdistrictValue)
+  },[provinceValue
+    ,districtValue
+    ,subdistrictValue])
 
   return (
     <>
@@ -104,20 +112,8 @@ function addressPage() {
                 :
                 <Input name="selectZipcode" type="text" defaultValue={zipCodeValue} disabled></Input>
             }
-
           </div>
         </div>
-      </div>
-      <div>
-        <p>
-          provice : {provinceValue}
-        </p>
-        <p>
-          district : {districtValue}
-        </p>
-        <p>
-          subdistrice : {subdistrictValue}
-        </p>
       </div>
     </>
   )
