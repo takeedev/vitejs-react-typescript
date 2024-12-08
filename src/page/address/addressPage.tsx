@@ -13,7 +13,7 @@ function addressPage() {
     PROVINCE_ID: number;
   }
 
-  interface subdistrictFilter {
+  interface subDistrictFilter {
     SUB_DISTRICT_ID: number;
     SUB_DISTRICT_CODE: string;
     SUB_DISTRICT_NAME: string;
@@ -22,27 +22,27 @@ function addressPage() {
     GEO_ID: number;
   }
 
-  const [districeArr, setDistricArr] = useState<districtFilter[]>([]);
-  const [subdistriceArr, setSubdistricArr] = useState<subdistrictFilter[]>([]);
+  const [districtArr, setDistrictArr] = useState<districtFilter[]>([]);
+  const [subDistrictArr, setSubDistrictArr] = useState<subDistrictFilter[]>([]);
   const [zipCodeValue, setZipCodeValue] = useState('');
   const [provinceValue, setProvinceValue] = useState();
   const [districtValue, setDistrictValue] = useState();
-  const [subdistrictValue, setSubdistrictValue] = useState();
+  const [subDistrictValue, setSubDistrictValue] = useState();
 
-  const selectProvice = (e: any) => {
+  const selectProvince = (e: any) => {
     setProvinceValue(e.target.value)
-    const selectDistrict = service.District.filter((districParam) => { return districParam.PROVINCE_ID == e.target.value })
-    setDistricArr(selectDistrict);
+    const selectDistrict = service.District.filter((districtParam) => { return districtParam.PROVINCE_ID == e.target.value })
+    setDistrictArr(selectDistrict);
   }
 
   const selectDistrict = (e: any) => {
     setDistrictValue(e.target.value);
-    const selectSubdistrict = service.Subdistrict.filter((subdistriceParam) => { return subdistriceParam.DISTRICT_ID == e.target.value && subdistriceParam.PROVINCE_ID == provinceValue });
-    setSubdistricArr(selectSubdistrict);
+    const selectSubDistrict = service.Subdistrict.filter((subDistrictParam) => { return subDistrictParam.DISTRICT_ID == e.target.value && subDistrictParam.PROVINCE_ID == provinceValue });
+    setSubDistrictArr(selectSubDistrict);
   }
 
-  const selectSubdistrict = (e: any) => {
-    setSubdistrictValue(e.target.value);
+  const selectSubDistrict = (e: any) => {
+    setSubDistrictValue(e.target.value);
     const selectZipcode = service.Zipcode.filter((zipcodeParam) => { return zipcodeParam.SUB_DISTRICT_ID == e.target.value && zipcodeParam.DISTRICT_ID == districtValue && zipcodeParam.PROVINCE_ID == provinceValue });
     selectZipcode.map((arr) => { setZipCodeValue(arr.ZIPCODE) })
   }
@@ -50,10 +50,10 @@ function addressPage() {
   useEffect(() => {
     console.log(provinceValue
         ,districtValue
-        ,subdistrictValue)
+        ,subDistrictValue)
   },[provinceValue
     ,districtValue
-    ,subdistrictValue])
+    ,subDistrictValue])
 
   return (
     <>
@@ -63,8 +63,8 @@ function addressPage() {
         <div className='card-bg-grey'>
           <div className="select-input">
             <Label for="selectProvince">Province</Label>
-            <Input name="selectProvice" type="select" onChange={selectProvice}>
-              <option value="">please select provice</option>
+            <Input name="selectProvice" type="select" onChange={selectProvince}>
+              <option value="">please select province</option>
               {service.Province.length !== 0 &&
                 service.Province.map(item => {
                   return (
@@ -79,8 +79,8 @@ function addressPage() {
             <Label for="selectDistrice">District</Label>
             <Input name="selectDistrice" type="select" onChange={selectDistrict}>
               <option value="">please select district</option>
-              {districeArr.length !== 0 &&
-                districeArr.map(item => {
+              {districtArr.length !== 0 &&
+                  districtArr.map(item => {
                   return (
                     <option key={item.DISTRICT_ID} value={item.DISTRICT_ID}>
                       {item.DISTRICT_NAME}
@@ -90,11 +90,11 @@ function addressPage() {
             </Input>
           </div>
           <div className="select-input">
-            <Label for="selectSubDistrice">Subdistrict</Label>
-            <Input name="selectSubDistrice" type="select" onChange={selectSubdistrict}>
+            <Label for="selectSubDistrice">SubDistrict</Label>
+            <Input name="selectSubDistrice" type="select" onChange={selectSubDistrict}>
               <option value="">please select subdistrict</option>
-              {subdistriceArr.length !== 0 &&
-                subdistriceArr.map(item => {
+              {subDistrictArr.length !== 0 &&
+                  subDistrictArr.map(item => {
                   return (
                     <option key={item.SUB_DISTRICT_ID} value={item.SUB_DISTRICT_ID}>
                       {item.SUB_DISTRICT_NAME}
