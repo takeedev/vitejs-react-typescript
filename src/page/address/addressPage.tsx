@@ -3,24 +3,24 @@ import { Input, Label } from 'reactstrap';
 import service from '../../service/indexservice'
 import './addressPage.css'
 
+interface districtFilter {
+  DISTRICT_ID: number;
+  DISTRICT_CODE: string;
+  DISTRICT_NAME: string;
+  GEO_ID: number;
+  PROVINCE_ID: number;
+}
+
+interface subDistrictFilter {
+  SUB_DISTRICT_ID: number;
+  SUB_DISTRICT_CODE: string;
+  SUB_DISTRICT_NAME: string;
+  DISTRICT_ID: number;
+  PROVINCE_ID: number;
+  GEO_ID: number;
+}
+
 function addressPage() {
-
-  interface districtFilter {
-    DISTRICT_ID: number;
-    DISTRICT_CODE: string;
-    DISTRICT_NAME: string;
-    GEO_ID: number;
-    PROVINCE_ID: number;
-  }
-
-  interface subDistrictFilter {
-    SUB_DISTRICT_ID: number;
-    SUB_DISTRICT_CODE: string;
-    SUB_DISTRICT_NAME: string;
-    DISTRICT_ID: number;
-    PROVINCE_ID: number;
-    GEO_ID: number;
-  }
 
   const [districtArr, setDistrictArr] = useState<districtFilter[]>([]);
   const [subDistrictArr, setSubDistrictArr] = useState<subDistrictFilter[]>([]);
@@ -31,19 +31,25 @@ function addressPage() {
 
   const selectProvince = (e: any) => {
     setProvinceValue(e.target.value)
-    const selectDistrict = service.District.filter((districtParam) => { return districtParam.PROVINCE_ID == e.target.value })
+    const selectDistrict = service.District
+        .filter((districtParam) => { return districtParam.PROVINCE_ID == e.target.value })
     setDistrictArr(selectDistrict);
   }
 
   const selectDistrict = (e: any) => {
     setDistrictValue(e.target.value);
-    const selectSubDistrict = service.Subdistrict.filter((subDistrictParam) => { return subDistrictParam.DISTRICT_ID == e.target.value && subDistrictParam.PROVINCE_ID == provinceValue });
+    const selectSubDistrict = service.Subdistrict
+        .filter((subDistrictParam) => { return subDistrictParam.DISTRICT_ID == e.target.value
+            && subDistrictParam.PROVINCE_ID == provinceValue });
     setSubDistrictArr(selectSubDistrict);
   }
 
   const selectSubDistrict = (e: any) => {
     setSubDistrictValue(e.target.value);
-    const selectZipcode = service.Zipcode.filter((zipcodeParam) => { return zipcodeParam.SUB_DISTRICT_ID == e.target.value && zipcodeParam.DISTRICT_ID == districtValue && zipcodeParam.PROVINCE_ID == provinceValue });
+    const selectZipcode = service.Zipcode
+        .filter((zipcodeParam) => { return zipcodeParam.SUB_DISTRICT_ID == e.target.value
+            && zipcodeParam.DISTRICT_ID == districtValue
+            && zipcodeParam.PROVINCE_ID == provinceValue });
     selectZipcode.map((arr) => { setZipCodeValue(arr.ZIPCODE) })
   }
 
