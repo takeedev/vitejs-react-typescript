@@ -1,202 +1,18 @@
-.container-slidbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100%;
-    background: #ffffff;
-    padding: 1rem;
-    width: 320px;
-    border-right: 0.8px solid #f0f0f0;
-    box-shadow: 1px 0 8px #888888;
-    overflow-y: auto;
-}
-
-ul {
-    margin: 0;
-    list-style: none;
-}
-
-.container-slidbar .nav-header {
+.container-sidebar .nav-header {
     display: flex;
     justify-content: center;
 }
 
-.container-slidbar .nav-header .logo-image {
+.container-sidebar .nav-header .logo-image {
     display: inline-block;
     /* background-color: #00A850; */
     padding-left: 30px;
     padding-right: 30px;
 }
 
-.container-slidbar .nav-header .logo-image img {
-    margin: 8px 0px 0px 0px;
+.container-sidebar .nav-header .logo-image img {
+    margin: 8px 0 0 0;
     height: 60px;
-}
-
-.container-slidbar .nav-header span {
-    height: 56px;
-    width: 62px;
-    right: 0;
-}
-
-.container-slidbar .nav-header span i {
-    display: inline-block;
-    margin: 13px;
-    font-size: 32px;
-    color: #f09918;
-}
-
-.container-slidbar .nav-header span i:hover {
-    cursor: pointer;
-    display: inline-block;
-    margin: 11px;
-    font-size: 36px;
-    color: #f09918;
-}
-
-.nav-link {
-    display: grid;
-    margin: 40px 15px 40px 15px;
-    gap: 14px;
-    padding: 0;
-}
-
-.nav-link li {
-    position: relative;
-    list-style: none;
-    margin-top: 5px;
-    margin-bottom: 5px;
-}
-
-.nav-link li i {
-    padding: 0px 9px 0px 5px;
-    font-size: 36px
-}
-
-.nav-link a {
-    text-decoration: none;
-    justify-content: center;
-    align-items: center;
-    display: inline-flex;
-    color: #3D4D5A;
-}
-
-.nav-link a:hover {
-    text-decoration: none;
-    justify-content: center;
-    align-items: center;
-    display: inline-flex;
-    color: #00A850;
-}
-
-/* ซ่อนเมนูย่อย */
-.sub-menu {
-    display: none;
-    padding-left: 20px;
-    transform: translateX(-200px);
-    transition: transform ease-in-out 0.2s;
-}
-
-/* แสดงเมนูย่อย */
-.sub-menu.show-menu {
-    display: block;
-    width: 100%;
-    transform: translateX(0px);
-    padding: 0;
-    background-color: #F0F2F4;
-    border: 2px solid #F0F2F4;
-    border-radius: 4px;
-    margin-top: 5px;
-}
-
-/*.sub-menu {*/
-/*    position: absolute;*/
-/*    transform: translateX(-200px);*/
-/*    transition: transform ease-in-out 0.2s;*/
-
-/*    padding: 0;*/
-/*    background-color: #F0F2F4;*/
-/*    border: 2px solid #F0F2F4;*/
-/*    border-radius: 4px;*/
-/*    margin-top: 5px;*/
-/*}*/
-
-/*.sub-menu.show-menu {*/
-/*    width: 100%;*/
-/*    transform: translateX(0px);*/
-/*}*/
-
-.sub-menu li {
-    padding: 10px;
-    font-size: 14px !important;
-    font-weight: 600;
-}
-
-.sub-menu li a i {
-    font-size: 18px !important;
-    display: block;
-    padding: 1rem;
-}
-
-.sub-menu li a {
-    color: #3D4D5A;
-}
-
-.sub-menu li a:hover {
-    color: #00A850;
-}
-
-.sub-menu li i {
-    font-size: 12px !important;
-    padding: 0px 2px 0px 5px !important;
-}
-
-/* ซ่อนเมนูย่อย */
-.link-subs {
-    display: none;
-    padding-left: 20px;
-    transform: translateX(-200px);
-    transition: transform ease-in-out 0.2s;
-}
-
-/* แสดงเมนูย่อย */
-.link-subs.show-menu {
-    display: block;
-    width: 100%;
-    transform: translateX(0px);
-}
-
-
-/*.link-subs {*/
-/*    padding: 0px;*/
-/*}*/
-
-.link-subs li {
-    padding: 1px 10px 1px 10px;
-    font-weight: normal !important;
-    border: 1px solid #F0F2F4;
-}
-
-.link-subs li a i {
-    font-size: 12px !important;
-}
-
-.link-subs a {
-    color: #7D8D98 !important;
-}
-
-.link-subs a:hover {
-    color: #00A850 !important;
-}
-
-.link-subs li:hover {
-    border: 1px solid #00A850;
-    border-radius: 20px;
-}
-
-.link-name-topic {
-    font-size: 18px !important;
-    font-weight: 600;
 }
 
 ::-webkit-scrollbar {
@@ -215,4 +31,127 @@ ul {
 
 ::-webkit-scrollbar-thumb:hover {
     background: rgb(199, 199, 199);
+}
+
+.menu {
+    margin: 40px 15px 40px 15px;
+    gap: 14px;
+    padding: 0;
+
+    i {
+        cursor: pointer;
+        display: inline-block;
+        margin: 11px;
+        font-size: 28px;
+    }
+
+    span , span:hover {
+        cursor: pointer;
+        font-size: 20px;
+        font-weight: bolder;
+    }
+
+}
+
+.menu-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.submenu {
+    display: none;
+    padding: 10px 10px 10px 40px;
+    margin: 5px 10px 10px 15px;
+    border-radius: 8px;
+    background-color: rgba(36, 128, 112, 0.16);
+
+    span , span:hover {
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: bolder;
+    }
+
+}
+.submenu.show {
+    display: block;
+}
+
+.sub-submenu {
+    display: none;
+    margin: 10px 10px 10px 40px;
+}
+
+.sub-submenu.show {
+    display: block;
+}
+
+.sub-submenu-end {
+    margin: 8px 0 0 0;
+}
+
+.active-link {
+    text-decoration: none;
+    color: #5799ff;
+    font-weight: bolder;
+}
+
+.inactive-link {
+    text-decoration: none;
+    color: #666;
+}
+
+.hidden {
+    display: none; /* ซ่อน Sidebar เมื่อมีคลาสนี้ */
+}
+
+.container-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background: #ffffff;
+    padding: 1rem;
+    width: 320px;
+    border-right: 1px solid #f0f0f0;
+    box-shadow: 1px 0 8px #888888;
+    overflow-y: auto;
+    transition: transform 0.3s ease-in-out;
+    transform: translateX(0);
+
+    .nav-header i {
+        cursor: pointer;
+        font-size: 60px;
+        margin: 10px -20px 0 -10px;
+        background: linear-gradient(to right, #248070, #ffffff);
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+    }
+}
+
+.container-sidebar.closed {
+    transform: translateX(-100%);
+}
+
+.close-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.open-icon {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    cursor: pointer;
+    z-index: 1000;
+    margin: 10px 0 0 -10px;
+    font-size: 60px;
+    background: linear-gradient(to right, #248070, #ffffff);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
 }
