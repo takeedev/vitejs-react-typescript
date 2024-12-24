@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from 'react'
 import { Input, Label } from 'reactstrap';
 import service from '../../service/indexservice'
+// import districtFilter from '../../Interface/interface';
+// import subDistrictFilter from '../../Interface/interface';
 import './addressPage.css'
 
 interface districtFilter {
