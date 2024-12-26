@@ -12,30 +12,30 @@ function home() {
         , typeId: String
     }
 
-    const [producType, setProducType] = useState('');
+    const [productType, setProductType] = useState('');
     const [productTypeValue, setProductTypeValue] = useState('');
     const [product, setProduct] = useState<ProductTypeInterface[]>([]);
 
     useEffect(() => {
-        setProducType('1000')
+        setProductType('1000')
         setProductTypeValue('1');
-        const selectProduct = service.ProductMain.filter((oilcom) => { return oilcom.typeId == '1' })
+        const selectProduct = service.ProductMain.filter((oilCom) => { return oilCom.typeId == '1' })
         setProduct(selectProduct);
     }, []);
 
     const eventCardType = (e: any) => {
         setProductTypeValue(e.target.value);
-        const selectProduct = service.ProductMain.filter((oilcom) => { return oilcom.typeId == e.target.value })
+        const selectProduct = service.ProductMain.filter((oilCom) => { return oilCom.typeId == e.target.value })
         if (e.target.value === "1") {
-            setProducType('1000');
+            setProductType('1000');
         } else {
-            setProducType('2000');
+            setProductType('2000');
         }
         setProduct(selectProduct);
     }
 
     const selectProductType = (e: any) => {
-        setProducType(e.target.value);
+        setProductType(e.target.value);
     };
 
     const handleSubmit = () => {
@@ -65,11 +65,11 @@ function home() {
                     </div>
                     <div className="select-input">
                         <Label for="selectProductType">Product</Label>
-                        <Input className='button-border' name="Product" type="select" value={producType} onChange={selectProductType}>
+                        <Input className='button-border' name="Product" type="select" value={productType} onChange={selectProductType}>
                             {product.length !== 0 &&
                                 product.map((item, index) => {
                                     return (
-                                        <option key={index} value={item.number}>
+                                        <option key={index} value={item.number.valueOf()}>
                                             {item?.name}
                                         </option>
                                     );
@@ -81,20 +81,20 @@ function home() {
 
             <div className='card-bg-white'>
                 <div className='header'>
-                    <h4>Seach</h4>
+                    <h4>Search</h4>
                 </div>
                 <Form onSubmit={handleSubmit}>
-                    <div className='card-bg-grey serch-header'>
+                    <div className='card-bg-grey search-header'>
                         <div className='search'>
                             <Label for="selectName">Product Type</Label>
                             <Input className='button-border' name="selectName" type="text" defaultValue={productTypeValue || ""}></Input>
                         </div>
                         <div className='search'>
                             <Label for="selectSername">Product</Label>
-                            <Input className='button-border' name="selectSername" type="text" defaultValue={producType || ""}></Input>
+                            <Input className='button-border' name="selectSername" type="text" defaultValue={productType || ""}></Input>
                         </div>
                         <div className='search button-width'>
-                            <Input className='button-border primary' type="button" value={"SEACRH"}></Input>
+                            <Input className='button-border primary' type="button" value={"Search"}></Input>
                         </div>
                     </div>
                 </Form>
